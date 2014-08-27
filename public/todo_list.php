@@ -2,49 +2,52 @@
 <html>
     <head>
     	 
+    <title>CSS Test Page</title>
+    <link rel="stylesheet" href="/css/site.css">
+
        
 				<title>To do List</title>
 
 	</head>
 
 	<body>
-		<center>
+		
 		<?php
 			var_dump($_POST);
 			var_dump($_GET);
 		?>
-		</center>
-
-		<center><h1>TO DO LIST</h1></center>
+		
+		 
+		<h1>TO DO LIST</h1>
 		<p></p>
 		<p></p>
-    	<center><ul></center>
+    	<ul>
 
-  	  <center><li>Wash and wax the car.</li>
+  	  <li>Wash and wax the car.</li>
  	  <li>Clean out the garage.</li>
- 	  <li>Get flea shampoo for dog.</li></center>
+ 	  <li>Get flea shampoo for dog.</li><
 
 
-			<center></ul></center>
+</ul>
    
             
 
 
- <center>RequestBin</center>
+RequestBin
 
 
 
 <form method="POST">
     <p>
-	     <center><label for="username">AddToList</label></center>
-	    <!-- <input id="addToList" name="addToList" type="text">
- -->
-  <center><textarea id="email_body" name="email_body" rows="5" cols="40"></textarea></center>
+	     <label for="username">AddToList</label>
+	    <!-- <input id="addToList" name="addToList" type="text"> -->
+ 
+  <textarea id="email_body" name="email_body" rows="5" cols="40"></textarea>
 
     </p>
 
     <p>
-		 <center><input type="submit" value= "Send"></center>
+		 <input type="submit" value= "Send">
 	</p>
 
 
@@ -52,8 +55,6 @@
 
 
 </form>
-
-
 
 
 
@@ -70,4 +71,6 @@ Save your HTML file, commit the file to your git repository, and push to GitHub.
 
      
 </body>
-</html>
+
+
+</html> 
