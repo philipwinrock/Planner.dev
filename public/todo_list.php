@@ -19,8 +19,7 @@
 		
 		 
 		<h1>TO DO LIST</h1>
-		<p></p>
-		<p></p>
+		
     	<ul>
 
   	  <li>Wash and wax the car.</li>
@@ -52,14 +51,30 @@ RequestBin
 
 
 
-
+		
 
 </form>
 
+</body>
 
 
 
 
+
+
+
+
+
+
+
+<!-- Create an external stylesheet and link it to your todo list page.
+Add a style to change the color of the headers on your page and make them underlined.
+Add a style to change the background color of the page.
+Add a style to change the list-style to something other than the default.
+Add a style to change the font for the entire page.
+Continue experimenting with styles to increase the visual appeal of the todo list.
+When complete, save your files, commit the files to your git repository, and push to GitHub.
+ -->
 <!-- within the file you just created, build an HTML document with a title of: "TODO List".
 In the body of the document, place a heading that says: "TODO List".
 Below the heading, place an unordered list with some sample to-do items.
@@ -68,9 +83,8 @@ Test the form using RequestBin.
 Save your HTML file, commit the file to your git repository, and push to GitHub.
  -->
 
-
      
-</body>
+
 
 
 </html> 

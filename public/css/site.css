@@ -1,16 +1,3 @@
-/*
-this content is stored in a file named "site.css"
-in a directory named "css" in the web root
-*/
-
-/*.fancy-header {
-    color: blue;
-    text-decoration: underline;
-
-}
-.extra-large {
-    font-size: 100px;
-}*/
 
 
 
@@ -27,45 +14,3 @@ in a directory named "css" in the web root
 
 
 
-     
-   
-
-      /*
-        selector for all "h1" elements
-        that are a descendent of id="container"
-        and have a class of "fancy-header"
-        */
-      /*h1 {
-        color: purple;
-        text-align: center;
-      }
-*/
-     /*/* /* selector for all "em" elements */
-       /*{
-        ont-weight: bold;
-     /* }
-
-      /* selector for all elements with class="article" */
-     /*.article {*/
-        /*clear:both;*/
-      /*}*/
-
-      
-       /* selector for all "anchor" elements
-        /that are a direct child of an element with class="article"*/
-        
-      /*.article> a {*/
-        /*float:right;*/
-      /*/*/
-
-
-/*/
-
-
-
-      /*<!-- Create an HTML file named css_selectors.html within the ~/vagrant-lamp/sites/codeup.dev/public folder on your Mac.
-Copy and paste the code template below. Next, replace all the "selector-todo"s with the appropriate selector based on the comment above.
-View the results in your browser to test for the expected output.
-Finally, save your work, commit the changes to your git repository, and push to GitHub. -->
-
-*/
