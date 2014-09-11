@@ -2,7 +2,7 @@
 <html>
     <head>
     	 
-    <title>CSS Test Page</title>
+    <title>todo_list.php</title>
     <link rel="stylesheet" href="/css/site.css">
 
        
@@ -46,7 +46,7 @@ RequestBin
     </p>
 
     <p>
-		 <input type="submit" value= "Send">
+		 <input type="submit" value= "Send"></input>
 	</p>
 
 
