@@ -36,7 +36,6 @@
 	 $items = openFile();
 
 
-
 	if (isset($_POST['addToList'])) {
 		$items[]=$_POST['addToList'];
 		write_file($items);
