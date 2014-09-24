@@ -3,61 +3,92 @@
 require_once('inc/address_data_store.php');
 
             // Create an object
-            $addressBookObject = new AddressDataStore('../data/address_book.csv');
+$addressBookObject = new AddressDataStore('../data/address_book.csv');
           
 
-            $addressBook = $addressBookObject->read();
+$addressBook = $addressBookObject->read();
 
+if (count($_FILES) > 0 && $_FILES['fileupload']['error'] == UPLOAD_ERR_OK) {
 
-    if (count($_FILES) > 0 && $_FILES['fileupload']['error'] == UPLOAD_ERR_OK) {
     // Set the destination directory for uploads
     $upload_dir = '/vagrant/sites/planner.dev/public/uploads/';
+
     // Grab the filename from the uploaded file by using basename
     $filename = basename($_FILES['fileupload']['name']);
+
     // Create the saved filename using the file's original name and our upload directory
     $saved_filename = $upload_dir . $filename;
+
     // Move the file from the temp location to our uploads directory
     move_uploaded_file($_FILES['fileupload']['tmp_name'], $saved_filename);
+
     // $uploadedfile = openfile($saved_filename);
     // $addressBook = array_merge($uploadedfile , $addressBook);
    
 }
-// var_dump($_FILES);
-    if (!empty($_FILES) && $_FILES['fileupload']['error'] == UPLOAD_ERR_OK){
-        $importedList = new AddressDataStore($saved_filename);
-        $newList = $importedList->read();
+    // var_dump($_FILES);
+if (!empty($_FILES) && $_FILES['fileupload']['error'] == UPLOAD_ERR_OK){
+    $importedList = new AddressDataStore($saved_filename);
+    $newList = $importedList->read();
         // var_dump($newList);
-        $addressBook = array_merge($addressBook,$newList);
-        $addressBookObject->write($addressBook);
+    $addressBook = array_merge($addressBook,$newList);
+    $addressBookObject->write($addressBook);
 
-    }
+}
+
+$saveToFile = "";
+
+if (!empty($_POST)) {
+        // Set boolean, to determine if we save later on or not
+    $saveToFile = true;
+
+        // Loop throught POST data
+foreach ($_POST as $key => $stringToValidate) {
+            
+    try{
+
+                    // Make sure each value in POST data is not empty, and not greater than 125 characters
+            if (empty($stringToValidate) || strlen($stringToValidate) > 125) {
+                        // If it meets this above condition, modify boolean and throw error exception
+                throw new Exception('Ivalid Input' . $key);
+            }
+
+            }       catch(Exception $e) {
+                        echo $e->getMessage();
+}
+}                
+$saveToFile = false;
+                
+}
 
 
-    if (!empty($_POST['name']) && !empty($_POST['address']) && !empty($_POST['city']) && !empty($_POST['state']) && !empty($_POST['zip']) && !empty($_POST['phone'])) {
-    // PREVENT CODE INJECTION ON EACH INPUT
+        // If all inputs are validated, and boolean value is still true - then run code to save.
+if ($saveToFile) {
+
     foreach ($_POST as $key => $input) {
         $_POST[$key] = strip_tags($input);
-    }
-    // ASSIGN FORM INPUT DATA TO SPECIFIC INDEXES
-    $newEntry[0] = $_POST['name'];
-    $newEntry[1] = $_POST['address'];
-    $newEntry[2] = $_POST['city'];
-    $newEntry[3] = $_POST['state'];
-    $newEntry[4] = $_POST['zip'];
-    $newEntry[5] = $_POST['phone'];
-    
-    // PUSH FORM ADDRESS BOOK ENTRY INTO ADDRESS BOOK ARRAY.
-    $addressBook[] = $newEntry;
-    // SAVE NEW ENTRY TO CSV FILE
-    $addressBookObject->write($addressBook);
 }
+
+            // ASSIGN FORM INPUT DATA TO SPECIFIC INDEXES
+            $newEntry[0] = $_POST['name'];
+            $newEntry[1] = $_POST['address'];
+            $newEntry[2] = $_POST['city'];
+            $newEntry[3] = $_POST['state'];
+            $newEntry[4] = $_POST['zip'];
+            $newEntry[5] = $_POST['phone'];
+            
+            // PUSH FORM ADDRESS BOOK ENTRY INTO ADDRESS BOOK ARRAY.
+            $addressBook[] = $newEntry;
+            $addressBookObject->write($addressBook);
+}
+   
  
 // GET REQUEST TO REMOVE SINGLE ENTRIES FROM THE ADDRESS BOOK
 if (isset($_GET['remove'])) {
     $removeKey = $_GET['remove'];
-    unset($addressBook[$removeKey]);
-    $addressBook = array_values($addressBook);
-    $addressBookObject->write($addressBook);
+        unset($addressBook[$removeKey]);
+        $addressBook = array_values($addressBook);
+        $addressBookObject->write($addressBook);
 }
 
 
@@ -78,16 +109,17 @@ if (isset($_GET['remove'])) {
             <div class="col-md-7 table-responsive">
                 <table class="table table-striped table-bordered table-condensed">
                     <tr>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Zip Code</th>
-                        <th>Phone Number</th>
-                        <th>Delete</th>
+                        <th><center>Name</center></th>
+                        <th><center>Address</center></th>
+                        <th><center>City</center></th>
+                        <th><center>State</center></th>
+                        <th><center>Zip Code</center></th>
+                        <th><center>Phone Number</center></th>
+                        <th><center>Delete</center></th>
+
                       
                         
-                        <style>body { background-color: #d0e4fe; } </style>
+                        <style>body{ background-color: #d0e4fe; }</style>
 
 
                        
