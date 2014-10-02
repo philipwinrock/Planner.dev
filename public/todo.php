@@ -6,37 +6,37 @@ define('FILENAME', 'data/mylist.txt');
 function openFile($filename = FILENAME){
 	$handle = fopen($filename , 'r');
 	if (filesize($filename) == 0) {
-	$filesize = 100;
-}
-else {
-	$filesize = filesize($filename);
-}
-	//read in entire file and remove any blank lines
-	$content = trim(fread($handle , $filesize));
+		$filesize = 100;
+	}
+			else {
+				$filesize = filesize($filename);
+	}
+				//read in entire file and remove any blank lines
+				$content = trim(fread($handle , $filesize));
 
-	//always close the file
-	fclose($handle);
+				//always close the file
+				fclose($handle);
 
-	//split the contents of file into an array
-	$list = explode("\n", $content);
+				//split the contents of file into an array
+				$list = explode("\n", $content);
 
-	// Returns a list of items in an array, from the filename specified.
-	return $list;
+				// Returns a list of items in an array, from the filename specified.
+				return $list;
 }
 	   
 function write_file($array, $filename = FILENAME){
 	$handle = fopen($filename, "w");
 	foreach ($array as $value) {
-	 fwrite($handle, $value . PHP_EOL);
-}
-	fclose($handle);
+	 	fwrite($handle, $value . PHP_EOL);
+	}
+		fclose($handle);
 }
 
-	 $items = openFile();
+$items = openFile();
 
 if (isset($_POST['addToList'])) {
 	$items[]=$_POST['addToList'];
-		write_file($items);
+	write_file($items);
 }
 
 if (isset($_GET['remove'])){
@@ -136,14 +136,6 @@ if (isset($saved_filename)) {
 </form>
 
 </body>
-
-
-
-
-
-
-
-
 
 
 </html> 

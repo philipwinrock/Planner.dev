@@ -8,7 +8,7 @@
 require_once('../inc/filestore.php');
 
 	 
-$listObject = new Filestore('../data/list.txt');
+$listObject = new Filestore('../data/todo_list.txt');
 $items = $listObject->read_lines();
 
 

@@ -1,0 +1,157 @@
+<html>
+<head>
+	<title>Whack.html</title>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<style>
+html, body {
+  margin: 0px;
+  padding: 0;
+}
+
+#wrapper {
+  margin: 50px auto 0px auto;
+  width: 456px;
+}
+
+h1 {
+  float: left;
+  margin: 10px 0px 25px 0px;
+  width: 50%;
+}
+
+#score {
+  float: right;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 15px 0px 25px 0px;
+  text-align: right;
+  width: 20%;
+}
+
+.box {
+  border: 1px solid #ccc;
+  float: left;
+  height: 150px;
+  width: 150px;
+}
+
+.mole {
+  background: src=("images/mole.jpg") no-repeat;
+  display: none;
+  height: 150px;
+  width: 150px;
+}
+
+.hole-selected {
+  background: src=("images/mole.jpg") no-repeat;
+}
+
+.mole-hit {
+  background: #990000;
+}
+
+.clear {
+  clear: both;
+}
+
+</style>
+<section id="wrapper" role="main">
+<h1>Whack-A-Mole</h1>
+<div id="score"></div>
+<div class="clear"></div>
+
+  <div id="game">
+    <div class="box">
+      <div class="mole"></div>
+    </div>
+    <div class="box">
+      <div class="mole"></div>
+    </div>
+    <div class="box">
+      <div class="mole"></div>
+    </div>
+
+    <div class="box">
+      <div class="mole"></div>
+    </div>
+    <div class="box">
+      <div class="mole"></div>
+    </div>
+    <div class="box">
+      <div class="mole"></div>
+    </div>
+
+    <div class="box">
+      <div class="mole"></div>
+    </div>
+    <div class="box">
+      <div class="mole"></div>
+    </div>
+    <div class="box">
+      <div class="mole"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+
+var mole = {
+
+  moleDivs: $('.mole'),
+  selectedDiv: '',
+  scoreDiv: $('#score'),
+
+  init: function()
+  {
+    // Interval for time loop
+    setInterval(function() {
+      // Call method to select hole randomly
+      mole.selectedDiv = $(mole.selectHole());
+      mole.show();
+
+      setTimeout(function() {
+        mole.hide(mole.selectedDiv);
+      }, 800);
+
+    }, 1500);
+  },
+
+  selectHole: function()
+  {
+    numberOfChildren = mole.moleDivs.length;
+    hole = Math.floor(Math.random() * numberOfChildren);
+    return mole.moleDivs[hole];
+  },
+
+  show: function()
+  {
+    this.selectedDiv.fadeIn(200, function() {
+
+      // If click call hit method
+      mole.selectedDiv.click(function() {
+        mole.hit();
+      });
+    });
+  },
+
+  hide: function()
+  {
+    this.selectedDiv.fadeOut(200, function() {
+      mole.selectedDiv.removeClass('mole-hit');
+    });
+  },
+
+  hit: function()
+  {
+    this.selectedDiv.addClass('mole-hit');
+    score = parseInt(this.scoreDiv.html()) + 1;
+    this.scoreDiv.html(score);
+  }
+
+}
+
+mole.init();
+
+</script>
+</body>
+</html>
