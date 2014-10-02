@@ -7,7 +7,7 @@
 #game-board {
 	width:700px;
 	box-align:center;
-	margin-left:200px;
+	margin-left:400px;
 	
 
 }
@@ -29,7 +29,7 @@
 <body>
 <h1>Whack a Mole</h1>
 
-<button id="start-button">Start</button>
+<center><button id="start-button">Start</button></center>
 
 <div id="game-board">
 <div class="mole-hole" id="1">
@@ -81,22 +81,19 @@ $(document).ready(function () {
 
 			$('#' + boxId).click(function() {
 				//console.log(this.id);
-				$("#" + boxId).removeClass('mole');
+				
 			});
 
 
 			setTimeout(function () {
 				$("#" + boxId).removeClass('mole');
-			}	,2000);	// Mole Timeout Interval
-		},3000);  // Start Button Interval
+			}	,2000);	
+		},3000);  
 	});
-
-	// $('.mole-hole').click(function() {
-
-	// 	console.log(this.id);
-	// 	$('this').removeClass('mole');
-
-	// });
+				//click on image only to remove
+	$("#game-board").on('click', '.mole', function() {
+		$(this).removeClass('mole');
+	});
 });
 
 </script>
