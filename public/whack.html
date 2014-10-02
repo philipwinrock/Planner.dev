@@ -23,13 +23,18 @@
 	height:150px;
 	float:left;
 }
+ .h1 {
+	align: center; 
+}
+
 
 </style>
 </head>
 <body>
+
 <h1>Whack a Mole</h1>
 
-<center><button id="start-button">Start</button></center>
+<button id="start-button">Start</button>
 
 <div id="game-board">
 <div class="mole-hole" id="1">
@@ -56,21 +61,12 @@
 </div>
 <div class="mole-hole" id="12">
 </div>
-<div class="mole-hole" id="13">
-</div>
-<div class="mole-hole" id="14">
-</div>
-<div class="mole-hole" id="15">
-</div>
-<div class="mole-hole" id="16">
-</div>
-	
-	
+
 <script>
 
 $(document).ready(function () {
 	function getRandomInt() {
-		return Math.floor(Math.random()* 16) +1;
+		return Math.floor(Math.random()* 12) +1;
 	}	
 
 	$('#start-button').click(function()  {
@@ -80,11 +76,8 @@ $(document).ready(function () {
 			$('#' + boxId).addClass('mole');
 
 			$('#' + boxId).click(function() {
-				//console.log(this.id);
 				
 			});
-
-
 			setTimeout(function () {
 				$("#" + boxId).removeClass('mole');
 			}	,2000);	
@@ -94,6 +87,9 @@ $(document).ready(function () {
 	$("#game-board").on('click', '.mole', function() {
 		$(this).removeClass('mole');
 	});
+				
+
+
 });
 
 </script>
